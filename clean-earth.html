@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clean Earth | الأرض النظيفة</title>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#06303a;--deep2:#0b4552;--mint:#7fe3b0;--sand:#f3efe0;--sun:#ffc857;--ash:#9fb4b2;--red:#ff6b57;--ink:#0a2a30;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sand:#e9e4d0}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Readex Pro',system-ui,sans-serif;background:var(--deep);color:var(--sand);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+nav{position:fixed;top:0;inset-inline:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;padding-top:calc(12px + env(safe-area-inset-top,0px));background:rgba(6,48,58,.82);backdrop-filter:blur(10px)}
+.logo{font-weight:700;font-size:1.2rem;display:flex;gap:8px;align-items:center}
+.logo i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--mint),#1f8a8a);display:inline-block}
+.links{display:flex;gap:22px;font-size:.92rem}
+.links a:hover{color:var(--mint)}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:500;padding:10px 22px;border-radius:40px;background:var(--mint);color:var(--ink);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(127,227,176,.35)}
+.btn.ghost{background:transparent;color:var(--sand);border:1.5px solid var(--ash)}
+.tools{display:flex;gap:10px;align-items:center}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;padding:110px 5vw 40px;position:relative;overflow:hidden}
+#hero h1{font-size:clamp(2.2rem,5.5vw,4.4rem);line-height:1.15;font-weight:700;margin-bottom:18px}
+#hero p{max-width:46ch;color:var(--ash);font-size:1.1rem;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+#globeWrap{position:relative;aspect-ratio:1;width:100%;max-width:620px;margin:auto;cursor:grab;touch-action:pan-y}
+#globe{width:100%;height:100%}
+.leaf{position:absolute;width:14px;height:22px;background:var(--mint);border-radius:0 100% 0 100%;opacity:.5;animation:fall linear infinite;pointer-events:none}
+@keyframes fall{from{transform:translateY(-10vh) rotate(0)}to{transform:translateY(110vh) rotate(540deg) translateX(60px)}}
+section{padding:90px 5vw}
+.light{background:var(--sand);color:var(--ink)}
+h2{font-size:clamp(1.7rem,3.6vw,2.8rem);margin-bottom:10px;line-height:1.25}
+.sub{color:var(--ash);max-width:60ch;margin-bottom:44px}
+.light .sub{color:#4b6b6b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;perspective:1000px}
+.card{background:var(--deep2);border-radius:22px;padding:28px;transform-style:preserve-3d;transition:transform .15s ease-out;border:1px solid rgba(127,227,176,.18)}
+.card h3{margin:14px 0 6px;transform:translateZ(30px)}
+.card p{color:var(--ash);font-size:.95rem;transform:translateZ(18px)}
+.card svg{width:54px;height:54px;transform:translateZ(45px)}
+.light .card{background:#fff;border-color:#d9d2b8}.light .card p{color:#4b6b6b}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:56px}
+.stat b{display:block;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--red);font-weight:700}
+.bars div{margin:16px 0}
+.bar{height:16px;border-radius:10px;background:rgba(6,48,58,.12);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--red));border-radius:10px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+#forest{background:linear-gradient(var(--deep),#0c5a52)}
+.sky{position:relative;height:300px;border-radius:26px;overflow:hidden;background:linear-gradient(#0e6f86,#9fe0c8);border:1px solid rgba(255,255,255,.2)}
+.sun{position:absolute;top:26px;inset-inline-end:40px;width:56px;height:56px;border-radius:50%;background:var(--sun);box-shadow:0 0 60px var(--sun);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.ground{position:absolute;bottom:0;width:100%;height:46px;background:#134a2f}
+.tree{position:absolute;bottom:38px;width:60px;height:90px;transform-origin:50% 100%;animation:grow 1.6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes grow{from{transform:scale(0)}}
+.count{display:flex;gap:18px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.count b{font-size:2.6rem;color:var(--mint)}
+.step{display:flex;gap:18px;align-items:flex-start}
+footer{background:#041f26;padding:50px 5vw;text-align:center;color:var(--ash);font-size:.9rem}
+footer form{display:flex;gap:10px;justify-content:center;margin:18px 0;flex-wrap:wrap}
+footer input{padding:11px 18px;border-radius:40px;border:1px solid var(--ash);background:transparent;color:var(--sand);font:inherit;min-width:230px}
+.rv{opacity:0;transform:translateY(26px);transition:.8s}.rv.on{opacity:1;transform:none}
+@media(max-width:800px){#hero{grid-template-columns:1fr;text-align:center}#hero p{margin-inline:auto}.cta{justify-content:center}.links{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.tick{background:linear-gradient(135deg,#7a1f17,#c4473a);border-radius:26px;padding:36px;max-width:760px}
+.tick b{font-size:clamp(3.2rem,9vw,6rem);line-height:1;font-weight:700;margin-inline-end:14px}
+.tick span{font-size:1.2rem}.tick small{display:block;margin-top:10px;opacity:.85}
+.bar.dk{background:rgba(255,255,255,.1)}
+.fact{margin-top:50px;background:var(--deep2);border-radius:22px;padding:30px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-inline-start:6px solid var(--mint)}
+.fact p{font-size:1.2rem;max-width:60ch;min-height:3.4em}
+#calc{background:var(--sand);color:var(--ink)}#calc .sub{color:#4b6b6b}
+.calc{display:grid;grid-template-columns:1.2fr 1fr;gap:30px}
+.inputs label{display:block;margin-bottom:22px;font-weight:500}
+.inputs b{float:inline-end;color:#1f8a8a}
+input[type=range]{width:100%;accent-color:#1f8a8a;margin-top:8px}
+.res{background:var(--deep);color:var(--sand);border-radius:24px;padding:30px}
+.res b{font-size:3.6rem;line-height:1;color:var(--mint);margin-inline-end:8px}
+.res .bar{background:rgba(255,255,255,.15)}.res small{display:block;margin-top:12px;color:var(--ash)}
+.todo{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.todo label{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #d9d2b8;border-radius:16px;padding:14px 16px;cursor:pointer}
+.todo input{width:20px;height:20px;accent-color:#1f8a8a}
+@media(max-width:800px){.calc{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+ <a class="logo" href="#hero"><i></i><span data-t="brand"></span></a>
+ <div class="links"><a href="#problem" data-t="n1"></a><a href="#stats" data-t="n2"></a><a href="#forest" data-t="n3"></a><a href="#feel" data-t="n5"></a><a href="#solutions" data-t="n4"></a><a href="#calc" data-t="n6"></a></div>
+ <div class="tools"><button class="btn ghost" id="lang" aria-label="Language">EN</button><a class="btn" href="#forest" data-t="donate"></a></div>
+</nav>
+
+<header id="hero">
+ <div>
+  <h1 data-t="h1"></h1>
+  <p data-t="hp"></p>
+  <div class="cta"><a class="btn" href="#forest" data-t="act"></a><a class="btn ghost" href="#problem" data-t="more"></a></div>
+ </div>
+ <div id="globeWrap"><canvas id="globe" width="800" height="800"></canvas></div>
+</header>
+
+<section id="problem" class="light">
+ <h2 class="rv" data-t="ph"></h2><p class="sub rv" data-t="ps"></p>
+ <div class="grid">
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#7a8f8f" stroke-width="3" stroke-linecap="round"><path d="M8 20h24a6 6 0 1 0-6-6M6 30h34a6 6 0 1 1-6 6M10 40h14"/></svg><h3 data-t="c1"></h3><p data-t="c1d"></p></div>
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#1f8a8a" stroke-width="3" stroke-linecap="round"><path d="M25 5C16 18 11 25 11 32a14 14 0 0 0 28 0c0-7-5-14-14-27z"/></svg><h3 data-t="c2"></h3><p data-t="c2d"></p></div>
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#e08a2c" stroke-width="3" stroke-linecap="round"><rect x="14" y="12" width="22" height="30" rx="4"/><path d="M10 12h30M20 6h10"/></svg><h3 data-t="c3"></h3><p data-t="c3d"></p></div>
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#c4473a" stroke-width="3" stroke-linecap="round"><rect x="6" y="12" width="38" height="24" rx="3"/><path d="M18 42h14M25 36v6"/></svg><h3 data-t="c4"></h3><p data-t="c4d"></p></div>
+ </div>
+</section>
+
+<section id="stats">
+ <h2 class="rv" data-t="sh"></h2><p class="sub rv" data-t="ss"></p>
+ <div class="stats">
+  <div class="stat rv"><b data-n="7">0</b><h3 data-t="s1"></h3><p class="sub" data-t="s1d"></p></div>
+  <div class="stat rv"><b data-n="80" data-u="%">0</b><h3 data-t="s2"></h3><p class="sub" data-t="s2d"></p></div>
+  <div class="stat rv"><b data-n="150">0</b><h3 data-t="s3"></h3><p class="sub" data-t="s3d"></p></div>
+ </div>
+ <h3 data-t="eh"></h3>
+ <div class="bars" style="max-width:700px">
+  <div><span data-t="e1"></span> $850B<div class="bar"><i data-w="100"></i></div></div>
+  <div><span data-t="e2"></span> $650B<div class="bar"><i data-w="76"></i></div></div>
+  <div><span data-t="e3"></span> $450B<div class="bar"><i data-w="53"></i></div></div>
+ </div>
+</section>
+
+<section id="feel" style="background:#041f26">
+ <h2 class="rv" data-t="fe1"></h2><p class="sub rv" data-t="fe2"></p>
+ <div class="tick rv"><div><b id="tk">0</b><span data-t="tkl"></span></div><small data-t="tkn"></small></div>
+ <h3 data-t="dh" style="margin:50px 0 6px"></h3><p class="sub" data-t="dn" style="margin-bottom:20px"></p>
+ <div class="bars" style="max-width:760px">
+  <div><span data-t="d1"></span><div class="bar dk"><i data-w="2"></i></div></div>
+  <div><span data-t="d2"></span><div class="bar dk"><i data-w="10"></i></div></div>
+  <div><span data-t="d3"></span><div class="bar dk"><i data-w="35"></i></div></div>
+  <div><span data-t="d4"></span><div class="bar dk"><i data-w="65"></i></div></div>
+  <div><span data-t="d5"></span><div class="bar dk"><i data-w="100"></i></div></div>
+ </div>
+ <div class="fact rv"><p id="factTxt"></p><button class="btn ghost" id="nextFact" data-t="nf"></button></div>
+</section>
+
+<section id="forest">
+ <h2 class="rv" data-t="fh"></h2><p class="sub rv" data-t="fs"></p>
+ <div class="sky" id="sky"><div class="sun"></div><div class="ground"></div></div>
+ <div class="count"><button class="btn" id="plant" data-t="plant"></button><span><b id="trees">0</b> <span data-t="treesL"></span></span><button class="btn ghost" id="reset" data-t="reset"></button></div>
+</section>
+
+<section id="solutions" class="light">
+ <h2 class="rv" data-t="rh"></h2><p class="sub rv" data-t="rs"></p>
+ <div class="grid">
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#1f8a8a" stroke-width="3" stroke-linecap="round"><path d="M12 8h26l-3 34H15zM14 18h22"/></svg><h3 data-t="r1"></h3><p data-t="r1d"></p></div>
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#e0a21f" stroke-width="3" stroke-linecap="round"><circle cx="25" cy="25" r="8"/><path d="M25 5v6M25 39v6M5 25h6M39 25h6M11 11l4 4M35 35l4 4M39 11l-4 4M15 35l-4 4"/></svg><h3 data-t="r2"></h3><p data-t="r2d"></p></div>
+  <div class="card tilt rv"><svg viewBox="0 0 50 50" fill="none" stroke="#c4473a" stroke-width="3" stroke-linecap="round"><path d="M8 20l22-10v30L8 30zM30 16h6a6 6 0 0 1 0 18h-6"/></svg><h3 data-t="r3"></h3><p data-t="r3d"></p></div>
+ </div>
+</section>
+
+<section id="calc">
+ <h2 class="rv" data-t="kh"></h2><p class="sub rv" data-t="ks"></p>
+ <div class="calc">
+  <div class="inputs">
+   <label><span data-t="k1"></span> <b id="o1">100</b><input type="range" id="i1" min="0" max="500" value="100"></label>
+   <label><span data-t="k2"></span> <b id="o2">2</b><input type="range" id="i2" min="0" max="12" value="2"></label>
+   <label><span data-t="k3"></span> <b id="o3">7</b><input type="range" id="i3" min="0" max="21" value="7"></label>
+   <label><span data-t="k4"></span> <b id="o4">250</b><input type="range" id="i4" min="0" max="800" step="10" value="250"></label>
+  </div>
+  <div class="res"><b id="co">0</b><span data-t="ku"></span>
+   <div class="bar" style="margin:14px 0"><i id="cob" style="width:50%"></i></div>
+   <p id="cot"></p><small data-t="kn"></small></div>
+ </div>
+ <h3 data-t="th" style="margin:56px 0 14px"></h3>
+ <ul class="todo" id="todo"></ul>
+ <div class="bar" style="max-width:420px;margin-top:14px"><i id="tp" style="width:0"></i></div>
+ <p class="sub" id="tpt" style="margin-top:8px"></p>
+</section>
+
+<footer>
+ <p class="logo" style="justify-content:center"><i></i><span data-t="brand"></span></p>
+ <p data-t="fd"></p>
+ <form onsubmit="event.preventDefault();this.querySelector('button').textContent=T[L].done"><input type="email" required data-p="mail"><button class="btn" data-t="sub"></button></form>
+ <p data-t="by"></p>
+ <p>© 2026 CleanEarth</p>
+</footer>
+
+<script>
+const T={
+en:{brand:"CleanEarth",n1:"The Problem",n2:"Statistics",n3:"Plant",n4:"Solutions",donate:"Donate Now",h1:"Together We Can Save Our Planet",hp:"Pollution is damaging our air, water and land. Join millions in the fight for a cleaner, healthier Earth.",act:"Take Action Now",more:"Learn More",
+ph:"The Pollution Crisis",ps:"Four kinds of pollution are threatening life on Earth.",c1:"Air Pollution",c1d:"9 out of 10 people breathe polluted air every day.",c2:"Water Pollution",c2d:"80% of wastewater returns to nature untreated.",c3:"Plastic Waste",c3d:"A garbage truck of plastic enters the ocean every minute.",c4:"E-Waste",c4d:"50 million metric tons are generated every year.",
+sh:"The Heavy Reality",ss:"Hard facts about environmental damage.",s1:"Million Deaths",s1d:"Premature deaths caused by air pollution each year.",s2:"% Untreated",s2d:"Wastewater released without treatment.",s3:"Million Tons",s3d:"Plastic waste floating in our oceans.",eh:"Economic impact",e1:"Healthcare costs",e2:"Lost productivity",e3:"Environmental damage",
+fh:"Plant Your Own Forest",fs:"Press the button and watch a tree grow. Every tree here stands for one real action you can take today.",plant:"Plant a tree",treesL:"trees planted",reset:"Clear forest",
+rh:"Our Roadmap to Recovery",rs:"Small changes add up to a big collective impact.",r1:"Reduce plastic",r1d:"Swap single-use plastic for glass, bamboo or cloth.",r2:"Use clean energy",r2d:"Choose solar power and efficient appliances.",r3:"Speak up",r3d:"Ask leaders for stronger environmental policy.",
+fd:"We protect the planet through education, innovation and action.",mail:"Your email",sub:"Subscribe",done:"Subscribed ✓",by:"Project contributor: Mohamed Zaki",n5:"Feel It",n6:"Your Footprint",fe1:"Feel What’s Happening Right Now",fe2:"Numbers are easy to ignore. Watch this one move while you read.",tkl:"garbage trucks of plastic",tkn:"Estimated total entering the ocean since you opened this page (one truck per minute).",dh:"How long does trash stay with us?",dn:"Approximate decomposition times. Bars are not to scale.",d1:"Banana peel: 2–5 weeks",d2:"Cigarette butt: about 10 years",d3:"Aluminum can: about 200 years",d4:"Plastic bottle: about 450 years",d5:"Glass bottle: up to a million years",nf:"Next fact",
+facts:["Around 7 million people die early each year from air pollution (WHO).","More than 2 billion people have no safely managed drinking water (WHO/UNICEF).","About 8 million tons of plastic reach the ocean every year.","The Nile gives Egypt about 97% of its fresh water, so keeping it clean protects every home.","One mature tree absorbs roughly 22 kg of CO₂ a year.","E-waste holds gold, copper and rare metals, but under a quarter is recycled."],
+kh:"What Is Your Carbon Footprint?",ks:"Move the sliders to see a rough yearly estimate for your lifestyle.",k1:"Car driving (km per week)",k2:"Flights per year",k3:"Meat meals per week",k4:"Electricity (kWh per month)",ku:"tons CO₂ per year",kn:"Rough estimate for awareness only. The world average is about 4.7 tons per person.",th:"Do one thing today",tpt:"actions done",
+todo:["Carry a reusable bottle and bag","Unplug devices you don’t use","Take a shorter shower","Walk or ride instead of driving once","Eat one meat-free meal","Recycle your e-waste properly"]},
+ar:{brand:"الأرض النظيفة",n1:"المشكلة",n2:"الأرقام",n3:"ازرع",n4:"الحلول",donate:"تبرّع الآن",h1:"معًا نقدر ننقذ كوكبنا",hp:"التلوث بيدمّر هواءنا ومياهنا وأرضنا. انضم لملايين الناس في معركة عشان أرض أنضف وصحة أحسن.",act:"ابدأ دلوقتي",more:"اعرف أكتر",
+ph:"أزمة التلوث",ps:"أربعة أنواع من التلوث بتهدد الحياة على الأرض.",c1:"تلوث الهواء",c1d:"٩ من كل ١٠ أشخاص بيتنفسوا هواء ملوث كل يوم.",c2:"تلوث المياه",c2d:"٨٠٪ من مياه الصرف بترجع للطبيعة من غير معالجة.",c3:"المخلفات البلاستيكية",c3d:"شاحنة زبالة بلاستيك بتدخل المحيط كل دقيقة.",c4:"المخلفات الإلكترونية",c4d:"٥٠ مليون طن بتتنتج كل سنة.",
+sh:"الواقع الصعب",ss:"حقائق مؤكدة عن الضرر البيئي.",s1:"مليون وفاة",s1d:"وفيات مبكرة بسبب تلوث الهواء كل سنة.",s2:"٪ بدون معالجة",s2d:"مياه صرف بتتصرف من غير أي معالجة.",s3:"مليون طن",s3d:"بلاستيك عايم في محيطات العالم.",eh:"التأثير الاقتصادي",e1:"تكاليف الرعاية الصحية",e2:"خسائر الإنتاجية",e3:"الضرر البيئي",
+fh:"ازرع غابتك بنفسك",fs:"دوس على الزرار وشوف الشجرة بتكبر. كل شجرة هنا بتمثّل خطوة حقيقية تقدر تعملها النهارده.",plant:"ازرع شجرة",treesL:"شجرة اتزرعت",reset:"امسح الغابة",
+rh:"خريطة الطريق للتعافي",rs:"تغييرات صغيرة بتعمل تأثير جماعي كبير.",r1:"قلّل البلاستيك",r1d:"استبدل البلاستيك أحادي الاستخدام بالزجاج أو الخيزران أو القماش.",r2:"استخدم طاقة نظيفة",r2d:"اختار الطاقة الشمسية والأجهزة الموفرة للكهربا.",r3:"اعلي صوتك",r3d:"اطلب من المسؤولين سياسات بيئية أقوى.",
+fd:"بنحمي الكوكب بالتوعية والابتكار والعمل.",mail:"بريدك الإلكتروني",sub:"اشترك",done:"تم الاشتراك ✓",by:"المساهم في المشروع: محمد زكي",n5:"إحساس",n6:"بصمتك",fe1:"حسّ باللي بيحصل دلوقتي",fe2:"الأرقام سهل نتجاهلها. بص الرقم ده وهو بيزيد وانت بتقرا.",tkl:"شاحنة بلاستيك",tkn:"تقدير لما دخل المحيط من أول ما فتحت الصفحة (شاحنة كل دقيقة).",dh:"الزبالة بتفضل معانا قد إيه؟",dn:"أوقات تحلل تقريبية. الأعمدة مش بمقياس رسم.",d1:"قشرة موز: من ٢ لـ ٥ أسابيع",d2:"عقب سيجارة: حوالي ١٠ سنين",d3:"علبة ألومنيوم: حوالي ٢٠٠ سنة",d4:"زجاجة بلاستيك: حوالي ٤٥٠ سنة",d5:"زجاجة زجاج: لحد مليون سنة",nf:"معلومة تانية",
+facts:["حوالي ٧ مليون شخص بيموتوا بدري كل سنة بسبب تلوث الهواء (منظمة الصحة).","أكتر من ٢ مليار شخص مفيش عندهم مياه شرب آمنة (الصحة العالمية/اليونيسف).","حوالي ٨ مليون طن بلاستيك بتوصل المحيط كل سنة.","النيل بيوفر لمصر حوالي ٩٧٪ من مياهها العذبة، يعني نضافته بتحمي كل بيت.","الشجرة الكبيرة بتمتص حوالي ٢٢ كجم كربون في السنة.","المخلفات الإلكترونية فيها دهب ونحاس ومعادن نادرة، لكن أقل من الربع بيتعاد تدويره."],
+kh:"بصمتك الكربونية قد إيه؟",ks:"حرّك المؤشرات وشوف تقدير تقريبي لانبعاثاتك في السنة.",k1:"سواقة العربية (كم في الأسبوع)",k2:"رحلات الطيران في السنة",k3:"وجبات لحمة في الأسبوع",k4:"الكهربا (كيلوواط ساعة في الشهر)",ku:"طن كربون في السنة",kn:"تقدير تقريبي للتوعية بس. متوسط العالم حوالي ٤٫٧ طن للفرد.",th:"اعمل حاجة واحدة النهارده",tpt:"خطوات اتعملت",
+todo:["شيل زجاجة وشنطة قابلة لإعادة الاستخدام","افصل الأجهزة اللي مش بتستخدمها","قصّر وقت الدش","امشي أو اركب مواصلات بدل العربية مرة","كُل وجبة من غير لحمة","سلّم مخلفاتك الإلكترونية لمكان تدوير"]}};
+let L=localStorage.getItem&&(()=>{try{return localStorage.getItem('lang')}catch(e){return null}})()||'ar';
+function apply(){const d=document.documentElement;d.lang=L;d.dir=L=='ar'?'rtl':'ltr';
+document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T[L][e.dataset.t]);
+document.querySelectorAll('[data-p]').forEach(e=>e.placeholder=T[L][e.dataset.p]);
+document.getElementById('lang').textContent=L=='ar'?'EN':'عربي';
+document.querySelectorAll('[data-n]').forEach(e=>{if(e.dataset.done)e.textContent=fmt(e,+e.dataset.n)});
+try{localStorage.setItem('lang',L)}catch(e){}window.rr&&rr()}
+const fmt=(e,v)=>(L=='ar'?v.toLocaleString('ar-EG'):v)+(e.dataset.u&&L=='en'?e.dataset.u:'');
+document.getElementById('lang').onclick=()=>{L=L=='ar'?'en':'ar';apply()};
+apply();
+
+// falling leaves
+for(let i=0;i<10;i++){const l=document.createElement('i');l.className='leaf';l.style.cssText=`left:${Math.random()*100}%;animation-duration:${9+Math.random()*10}s;animation-delay:-${Math.random()*15}s;opacity:${.2+Math.random()*.4}`;document.getElementById('hero').appendChild(l)}
+
+// 3D globe on canvas
+const cv=document.getElementById('globe'),cx=cv.getContext('2d'),P=[];
+const N=1400,ga=Math.PI*(3-Math.sqrt(5));
+for(let i=0;i<N;i++){const y=1-i/(N-1)*2,r=Math.sqrt(1-y*y),t=ga*i,x=Math.cos(t)*r,z=Math.sin(t)*r;
+ const v=Math.sin(x*3.1+1)*Math.cos(y*3.7)+Math.sin(z*4.2+y*2)*.6+Math.cos(x*6+z*5)*.25;
+ P.push({x,y,z,land:v>.35})}
+const hot=[[.5,.3,.8],[-.7,.2,.68],[.1,-.4,.91],[-.3,.6,.74]].map(a=>{const m=Math.hypot(...a);return a.map(k=>k/m)});
+let rot=0,tilt=.35,drag=false,lx=0,ly=0,tm=0;
+const gw=document.getElementById('globeWrap');
+gw.onpointerdown=e=>{drag=true;lx=e.clientX;ly=e.clientY;gw.style.cursor='grabbing'};
+addEventListener('pointerup',()=>{drag=false;gw.style.cursor='grab'});
+addEventListener('pointermove',e=>{if(drag){rot+=(e.clientX-lx)*.01;tilt=Math.max(-.9,Math.min(.9,tilt+(e.clientY-ly)*.005));lx=e.clientX;ly=e.clientY}});
+function proj(p,R,c){const cr=Math.cos(rot),sr=Math.sin(rot),ct=Math.cos(tilt),st=Math.sin(tilt);
+ let x=p.x*cr+p.z*sr,z=-p.x*sr+p.z*cr,y=p.y*ct-z*st;z=p.y*st+z*ct;return[c+x*R,c-y*R,z]}
+function draw(){tm+=.03;if(!drag)rot+=.004;const W=cv.width,c=W/2,R=W*.4;cx.clearRect(0,0,W,W);
+ const g=cx.createRadialGradient(c*.8,c*.75,R*.1,c,c,R*1.35);g.addColorStop(0,'rgba(127,227,176,.22)');g.addColorStop(.7,'rgba(15,100,120,.18)');g.addColorStop(1,'rgba(0,0,0,0)');
+ cx.fillStyle=g;cx.beginPath();cx.arc(c,c,R*1.35,0,7);cx.fill();
+ cx.fillStyle='#0b4a5c';cx.beginPath();cx.arc(c,c,R,0,7);cx.fill();
+ for(const p of P){const[x,y,z]=proj(p,R,c);if(z<0)continue;
+  cx.fillStyle=p.land?`rgba(127,227,176,${.35+z*.65})`:`rgba(90,170,200,${.15+z*.3})`;
+  const s=p.land?3.6:2.2;cx.fillRect(x-s/2,y-s/2,s,s)}
+ for(const h of hot){const[x,y,z]=proj({x:h[0],y:h[1],z:h[2]},R,c);if(z<.05)continue;
+  const k=(Math.sin(tm+h[0]*9)+1)/2;cx.strokeStyle=`rgba(255,107,87,${1-k})`;cx.lineWidth=3;
+  cx.beginPath();cx.arc(x,y,8+k*34,0,7);cx.stroke();cx.fillStyle='#ff6b57';cx.beginPath();cx.arc(x,y,6,0,7);cx.fill()}
+ requestAnimationFrame(draw)}
+draw();
+
+// 3D tilt cards
+document.querySelectorAll('.tilt').forEach(c=>{
+ c.onpointermove=e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`};
+ c.onpointerleave=()=>c.style.transform=''});
+
+// reveal + counters + bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('on');
+ const b=t.querySelector&&t.querySelector('[data-n]');if(b&&!b.dataset.done){b.dataset.done=1;const n=+b.dataset.n,s=performance.now();
+  (function f(now){const k=Math.min(1,(now-s)/1800);b.textContent=fmt(b,Math.round(n*(1-Math.pow(1-k,3))));if(k<1)requestAnimationFrame(f)})(s)}
+ t.querySelectorAll&&t.querySelectorAll('[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');
+ io.unobserve(t)}),{threshold:.25});
+document.querySelectorAll('.rv,.bars').forEach(e=>io.observe(e));
+
+// forest
+const sky=document.getElementById('sky'),cnt=document.getElementById('trees');let n=0;
+const tree=(c)=>`<svg viewBox="0 0 60 90"><rect x="27" y="52" width="6" height="38" fill="#6b4226"/><circle cx="30" cy="36" r="24" fill="${c}"/><circle cx="18" cy="48" r="14" fill="${c}"/><circle cx="43" cy="48" r="14" fill="${c}"/></svg>`;
+document.getElementById('plant').onclick=()=>{const d=document.createElement('div'),s=.6+Math.random()*.7;d.className='tree';
+ d.style.cssText=`left:${Math.random()*92}%;width:${60*s}px;height:${90*s}px;z-index:${Math.round(s*10)}`;
+ d.innerHTML=tree(['#2fa96b','#3dc27c','#1f8a55','#58d08b'][n%4]);sky.appendChild(d);cnt.textContent=L=='ar'?(++n).toLocaleString('ar-EG'):++n};
+document.getElementById('reset').onclick=()=>{sky.querySelectorAll('.tree').forEach(t=>t.remove());n=0;cnt.textContent=L=='ar'?'٠':0};
+// extras: ticker, facts, calculator, checklist
+const t0=Date.now(),num=(v,d=1)=>(+v).toLocaleString(L=='ar'?'ar-EG':'en',{minimumFractionDigits:d,maximumFractionDigits:d});
+setInterval(()=>{document.getElementById('tk').textContent=num((Date.now()-t0)/60000,2)},200);
+let fi=0;const showFact=()=>document.getElementById('factTxt').textContent=T[L].facts[fi%T[L].facts.length];
+document.getElementById('nextFact').onclick=()=>{fi++;showFact()};
+const $=id=>document.getElementById(id);
+function calc(){const a=+$('i1').value,f=+$('i2').value,m=+$('i3').value,e=+$('i4').value;
+ $('o1').textContent=num(a,0);$('o2').textContent=num(f,0);$('o3').textContent=num(m,0);$('o4').textContent=num(e,0);
+ const t=1+a*52*.17/1000+f*.25+m*52*2.5/1000+e*12*.45/1000;
+ $('co').textContent=num(t,1);$('cob').style.width=Math.min(100,t/9.4*100)+'%';
+ $('cob').style.background=t>4.7?'linear-gradient(90deg,#ffc857,#ff6b57)':'#7fe3b0';
+ const tr=Math.round(t*1000/22);
+ $('cot').textContent=L=='ar'?(t>4.7?'أعلى':'أقل')+' من متوسط العالم. تحتاج حوالي '+num(tr,0)+' شجرة لامتصاص ده في سنة.':'You are '+(t>4.7?'above':'below')+' the world average. About '+num(tr,0)+' trees would absorb this in a year.'}
+document.querySelectorAll('.inputs input').forEach(i=>i.oninput=calc);
+const todo=$('todo');
+function tasks(){const ch=[...todo.querySelectorAll('input')].map(i=>i.checked);
+ todo.innerHTML=T[L].todo.map((x,i)=>`<li><label><input type="checkbox" ${ch[i]?'checked':''}>${x}</label></li>`).join('');
+ todo.querySelectorAll('input').forEach(i=>i.onchange=prog);prog()}
+function prog(){const c=todo.querySelectorAll('input:checked').length;$('tp').style.width=c/6*100+'%';$('tpt').textContent=num(c,0)+' / '+num(6,0)+' '+T[L].tpt}
+window.rr=()=>{showFact();calc();tasks()};rr();
+</script>
+</body>
+</html>
